@@ -10,18 +10,20 @@ async function populateUsersTable() {
   ('emmma', 'jozQBkdav0h5mWbBk5qlwRqIxR52', CURRENT_DATE),
   ('lorentz', 'PsiAAIPYIhRXdzlPGMDy1xwvjKJ3', CURRENT_DATE);
   `);
+  console.log(`${res.command} Populated users table`);
 }
 
 //*************** Populate Pet Table ***********************/
-async function populatePetTable() {
+async function populatePetsTable() {
   const res = await query(` 
   INSERT INTO pets (pet_name, user_id, pet_birth_date, pet_meditation_total)
   VALUES 
   ('Wattson', '1', CURRENT_DATE, 0),
   ('Lewis pet', '2', CURRENT_DATE, 0),
-  ('Emmas' pet', '3', CURRENT_DATE, 0),
-  ('Lorentzs pet ', '4', CURRENT_DATE, 0); 
+  ('Emmas pet', '3', CURRENT_DATE, 0),
+  ('Lorentzs pet', '4', CURRENT_DATE, 0); 
   `);
+  console.log(`${res.command} Populated pets table`);
 }
 
 //*************** Populate Meditation Log ***********************//
@@ -34,6 +36,7 @@ async function populateMeditationTable() {
   (3, 3, CURRENT_DATE, 220, 3),
   (4, 4, CURRENT_DATE, 260, 4);
   `);
+  console.log(`${res.command} Populated meditation table`);
 }
 
 //*************** Populate Mood Log  ***********************//
@@ -44,13 +47,13 @@ async function populateMoodLogTable() {
     (1, CURRENT_DATE, 2),
     (2, CURRENT_DATE, 3),
     (3, CURRENT_DATE, 4),
-    (4, CURRENT_DATE, 5),
-  
-  ;`);
+    (4, CURRENT_DATE, 5);
+    `);
+  console.log(`${res.command} Populated mood log table`);
 }
 
 //*********************** Calling all functions for script ***********************//
 await populateUsersTable();
-await populatePetTable();
+await populatePetsTable();
 await populateMeditationTable();
 await populateMoodLogTable();

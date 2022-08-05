@@ -3,7 +3,7 @@ import { query } from "../index.js";
 //*************** Users Table ***********************//
 const sqlUsersTableString = `CREATE TABLE IF NOT EXISTS users (
         user_id INT GENERATED ALWAYS AS IDENTITY,
-        username VARCHAR(16) NOT NULL,
+        username VARCHAR(32) NOT NULL,
         firebase_user_id TEXT NOT NULL,
         join_date DATE NOT NULL,
         PRIMARY KEY(user_id)
@@ -33,7 +33,7 @@ async function createPetsTable() {
   console.log(`${res.command} Created pets table`);
 }
 
-//*************** Medidtation Log ***********************//
+//*************** Meditation Log ***********************//
 const sqlMeditationTableString = `CREATE TABLE IF NOT EXISTS meditation_log (
     meditation_id INT GENERATED ALWAYS AS IDENTITY,
     pet_id INT NOT NULL,
@@ -44,9 +44,9 @@ const sqlMeditationTableString = `CREATE TABLE IF NOT EXISTS meditation_log (
     PRIMARY KEY(meditation_id),
     FOREIGN KEY(user_id)
         REFERENCES users(user_id)
-        ON DELETE CASCADE);
+        ON DELETE CASCADE,
     FOREIGN KEY(pet_id)
-        REFERENCES pet(pet_id)
+        REFERENCES pets(pet_id)
         ON DELETE CASCADE);
 `;
 
@@ -60,8 +60,8 @@ const sqlMoodLogString = `CREATE TABLE IF NOT EXISTS mood_log (
     mood_log_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT NOT NULL,
     date DATE,
-    mood_rating 
-    PRIMARY KEY(meditation_id),
+    mood_rating INT,
+    PRIMARY KEY(mood_log_id),
     FOREIGN KEY(user_id)
         REFERENCES users(user_id)
         ON DELETE CASCADE);
@@ -74,6 +74,6 @@ async function createMoodLogTable() {
 
 //*********************** Calling all functions for script ***********************//
 await createUsersTable();
-await createPetTable();
+await createPetsTable();
 await createMeditationTable();
 await createMoodLogTable();
