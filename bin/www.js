@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/*** Module dependencies.*/
+/*** Module dependencies.**/
 import http from "http";
 import debugLib from "debug";
 import app from "../app.js";
