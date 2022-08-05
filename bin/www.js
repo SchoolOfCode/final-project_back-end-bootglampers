@@ -5,7 +5,7 @@ import http from "http";
 import debugLib from "debug";
 import app from "../app.js";
 
-const debug = debugLib("helper-videos-backend-deployment:server");
+const debug = debugLib("final-project_back-end-bootglampers");
 
 /*** Get port from environment and store in Express. */
 
