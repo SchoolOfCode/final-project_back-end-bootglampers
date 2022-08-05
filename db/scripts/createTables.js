@@ -1,0 +1,79 @@
+import { query } from "../index.js";
+
+//*************** Users Table ***********************//
+const sqlUsersTableString = `CREATE TABLE IF NOT EXISTS users (
+        user_id INT GENERATED ALWAYS AS IDENTITY,
+        username VARCHAR(16) NOT NULL,
+        firebase_user_id TEXT,
+        join_date TIMESTAMP,
+        PRIMARY KEY(user_id)
+    );
+`;
+
+async function createUsersTable() {
+  const res = await query(sqlUsersTableString);
+  console.log(`${res.command} Created users table`);
+}
+
+//*************** Pet Table ***********************//
+const sqlPetTableString = `CREATE TABLE IF NOT EXISTS pet (
+    pet_id INT GENERATED ALWAYS AS IDENTITY,
+    pet_name VARCHAR(32) NOT NULL,
+    user_id INT NOT NULL,
+    birth_date TIMESTAMP NOT NULL, 
+    pet_meditation_total INT,     
+    PRIMARY KEY(pet_id),
+    FOREIGN KEY(user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE);
+`;
+
+async function createPetTable() {
+  const res = await query(sqlPetTableString);
+  console.log(`${res.command} Created pet table`);
+}
+
+//*************** Medidtation Log ***********************//
+const sqlMeditationTableString = `CREATE TABLE IF NOT EXISTS meditation_log (
+    meditation_id INT GENERATED ALWAYS AS IDENTITY,
+    pet_id INT NOT NULL,
+    user_id INT NOT NULL,
+    date TIMESTAMP,
+    meditation_length INT,
+    streak_days INT,     
+    PRIMARY KEY(meditation_id),
+    FOREIGN KEY(user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE);
+    FOREIGN KEY(pet_id)
+        REFERENCES pet(pet_id)
+        ON DELETE CASCADE);
+`;
+
+async function createMeditationTable() {
+  const res = await query(sqlMeditationTableString);
+  console.log(`${res.command} Created meditation log table`);
+}
+
+//*************** Mood Log  ***********************//
+const sqlMoodLogString = `CREATE TABLE IF NOT EXISTS mood_log (
+    mood_log_id INT GENERATED ALWAYS AS IDENTITY,
+    user_id INT NOT NULL,
+    date TIMESTAMP,
+    mood_rating 
+    PRIMARY KEY(meditation_id),
+    FOREIGN KEY(user_id)
+        REFERENCES users(user_id)
+        ON DELETE CASCADE);
+`;
+
+async function createMoodLogTable() {
+  const res = await query(sqlMoodLogString);
+  console.log(`${res.command} Created mood log table`);
+}
+
+//*********************** Calling all functions for script ***********************//
+await createUsersTable();
+await createPetTable();
+await createMeditationTable();
+await createMoodLogTable();
