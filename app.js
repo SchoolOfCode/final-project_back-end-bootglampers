@@ -18,4 +18,11 @@ app.get("/", function (req, res) {
 
 //routes
 
+const router = express.Router();
+router.get("/", async (req, res) => {
+  const data = await pool.query("SELECT * FROM users;");
+  const res = data.rows;
+  res.json({ success: true, payload: data });
+});
+
 export default app;
