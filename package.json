@@ -5,7 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:createTables": "node -r dotenv/config ./db/scripts/createTables.js",
+    "db:dropTables": "node -r dotenv/config ./db/scripts/dropTables.js",
+    "db:populateTables": "node -r dotenv/config ./db/scripts/populateTables.js",
+    "db:resetTables": "npm run db:dropTables && npm run db:createTables && npm run db:populateTables "
   },
   "repository": {
     "type": "git",
