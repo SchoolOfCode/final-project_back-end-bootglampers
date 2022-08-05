@@ -4,8 +4,8 @@ import { query } from "../index.js";
 const sqlUsersTableString = `CREATE TABLE IF NOT EXISTS users (
         user_id INT GENERATED ALWAYS AS IDENTITY,
         username VARCHAR(16) NOT NULL,
-        firebase_user_id TEXT,
-        join_date TIMESTAMP,
+        firebase_user_id TEXT NOT NULL,
+        join_date DATE NOT NULL,
         PRIMARY KEY(user_id)
     );
 `;
@@ -16,11 +16,11 @@ async function createUsersTable() {
 }
 
 //*************** Pet Table ***********************//
-const sqlPetTableString = `CREATE TABLE IF NOT EXISTS pet (
+const sqlPetTableString = `CREATE TABLE IF NOT EXISTS pets (
     pet_id INT GENERATED ALWAYS AS IDENTITY,
     pet_name VARCHAR(32) NOT NULL,
     user_id INT NOT NULL,
-    birth_date TIMESTAMP NOT NULL, 
+    pet_birth_date DATE NOT NULL, 
     pet_meditation_total INT,     
     PRIMARY KEY(pet_id),
     FOREIGN KEY(user_id)
@@ -28,9 +28,9 @@ const sqlPetTableString = `CREATE TABLE IF NOT EXISTS pet (
         ON DELETE CASCADE);
 `;
 
-async function createPetTable() {
+async function createPetsTable() {
   const res = await query(sqlPetTableString);
-  console.log(`${res.command} Created pet table`);
+  console.log(`${res.command} Created pets table`);
 }
 
 //*************** Medidtation Log ***********************//
@@ -38,8 +38,8 @@ const sqlMeditationTableString = `CREATE TABLE IF NOT EXISTS meditation_log (
     meditation_id INT GENERATED ALWAYS AS IDENTITY,
     pet_id INT NOT NULL,
     user_id INT NOT NULL,
-    date TIMESTAMP,
-    meditation_length INT,
+    date DATE NOT NULL,
+    meditation_length INT NOT NULL,
     streak_days INT,     
     PRIMARY KEY(meditation_id),
     FOREIGN KEY(user_id)
@@ -59,7 +59,7 @@ async function createMeditationTable() {
 const sqlMoodLogString = `CREATE TABLE IF NOT EXISTS mood_log (
     mood_log_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT NOT NULL,
-    date TIMESTAMP,
+    date DATE,
     mood_rating 
     PRIMARY KEY(meditation_id),
     FOREIGN KEY(user_id)
