@@ -5,7 +5,7 @@ const statsRouter = express.Router();
 
 statsRouter.get("/", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
-  const userId = req.query.userid;
+  const userId = "CNXBkvXJbxUjh5bOxk8NN2DV2l72";
   let totalVisits = "";
   let totalMediTime = "";
   //   let petAge = "";
