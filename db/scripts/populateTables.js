@@ -3,12 +3,12 @@ import { query } from "../index.js";
 //*************** Populate Users Table ***********************//
 async function populateUsersTable() {
   const res = await query(` 
-  INSERT INTO users (username, firebase_user_id, join_date)
+  INSERT INTO users (username, firebase_user_id, join_date, total_visits)
   VALUES
-  ('chocorainaaa', 'CNXBkvXJbxUjh5bOxk8NN2DV2l72', CURRENT_DATE),
-  ('lewis-signupstech', 'BNWd6NjltWZnnIPROdnSHaCNMKM2', CURRENT_DATE),
-  ('emmma', 'jozQBkdav0h5mWbBk5qlwRqIxR52', CURRENT_DATE),
-  ('lorentz', 'PsiAAIPYIhRXdzlPGMDy1xwvjKJ3', CURRENT_DATE);
+  ('chocorainaaa', 'CNXBkvXJbxUjh5bOxk8NN2DV2l72', CURRENT_DATE, 1),
+  ('lewis-signupstech', 'BNWd6NjltWZnnIPROdnSHaCNMKM2', CURRENT_DATE, 2),
+  ('emmma', 'jozQBkdav0h5mWbBk5qlwRqIxR52', CURRENT_DATE, 3),
+  ('lorentz', 'PsiAAIPYIhRXdzlPGMDy1xwvjKJ3', CURRENT_DATE, 4);
   `);
   console.log(`${res.command} Populated users table`);
 }
