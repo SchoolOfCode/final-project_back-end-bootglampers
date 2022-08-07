@@ -1,7 +1,7 @@
 import express from "express";
 import { getTotalVisits, getTotalMedTime } from "../models/index.js";
 
-const router = express.Router();
+const statsRouter = express.Router();
 
 router.get("/:userId", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
@@ -21,4 +21,4 @@ router.get("/:userId", async function (req, res) {
   });
 });
 
-export { router as statsRouter };
+export default statsRouter;
