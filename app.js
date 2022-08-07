@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import logger from "morgan";
-import { statsRouter } from "./routes/index.js";
+// import { statsRouter } from "./routes/index.js";
 
 const app = express();
 
