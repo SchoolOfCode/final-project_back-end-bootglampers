@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-app.use("/stats", statsRouter);
+// app.use("/stats", statsRouter);
 
 //test route
 app.get("/", function (req, res) {
