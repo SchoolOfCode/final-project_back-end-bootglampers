@@ -10,10 +10,10 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-// app.use("/stats", statsRouter);
+app.use("/stats", statsRouter);
 
 //test route
-app.get("/", function (req, res) {
+app.get("/test", function (req, res) {
   res.json({
     success: true,
     message: "Test route up and running!",
