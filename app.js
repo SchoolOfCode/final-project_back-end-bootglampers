@@ -13,12 +13,12 @@ app.use(express.json());
 // app.use("/stats", statsRouter);
 
 // //test route
-// app.get("/test", function (req, res) {
-//   res.json({
-//     success: true,
-//     message: "Test route up and running!",
-//   });
-// });
+app.get("/", function (req, res) {
+  res.json({
+    success: true,
+    message: "Test route up and running!",
+  });
+});
 
 //routes
 
