@@ -13,7 +13,7 @@ statsRouter.get("/:userId", async function (req, res) {
 
   totalVisits = await getTotalVisits(userId);
   totalMediTime = await getTotalMedTime(userId);
-  petAge = await getPetAge(userId);
+  //   petAge = await getPetAge(userId);
   res.json({
     success: true,
     payload: totalVisits,
