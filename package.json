@@ -2,7 +2,7 @@
   "name": "final-project_back-end-bootglampers",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./",
   "type": "module",
   "scripts": {
     "start": "node -r dotenv/config ./bin/www.js",
