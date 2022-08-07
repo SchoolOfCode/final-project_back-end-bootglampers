@@ -23,11 +23,6 @@
     "url": "https://github.com/SchoolOfCode/final-project_back-end-bootglampers/issues"
   },
   "homepage": "https://github.com/SchoolOfCode/final-project_back-end-bootglampers#readme",
-  "devDependencies": {
-    "dotenv": "^16.0.1",
-    "nodemon": "^2.0.19",
-    "pg": "^8.7.3"
-  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -37,7 +32,11 @@
     "pg": "^8.7.3",
     "nodemon": "^2.0.19",
     "dotenv": "^16.0.1"
-
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19",
+    "pg": "^8.7.3"
   },
   "engines": {
     "node": "16.15.0"
