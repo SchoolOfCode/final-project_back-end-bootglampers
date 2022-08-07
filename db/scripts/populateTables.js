@@ -32,6 +32,7 @@ async function populateMeditationTable() {
   INSERT INTO meditation_log (pet_id, user_id, date, meditation_length, streak_days)
   VALUES
   (1, 1, CURRENT_DATE, 120, 1),
+  (1, 1, CURRENT_DATE, 300, 1),
   (2, 2, CURRENT_DATE, 180, 0),
   (3, 3, CURRENT_DATE, 220, 3),
   (4, 4, CURRENT_DATE, 260, 4);
