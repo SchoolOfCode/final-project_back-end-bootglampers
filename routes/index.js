@@ -3,7 +3,7 @@ import { getTotalVisits, getTotalMedTime } from "../models/index.js";
 
 const statsRouter = express.Router();
 
-router.get("/:userId", async function (req, res) {
+statsRouter.get("/:userId", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
   const userId = req.params.userId;
   let totalVisits = "";
