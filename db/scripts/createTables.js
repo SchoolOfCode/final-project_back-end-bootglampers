@@ -6,6 +6,7 @@ const sqlUsersTableString = `CREATE TABLE IF NOT EXISTS users (
         username VARCHAR(32) NOT NULL,
         firebase_user_id TEXT NOT NULL,
         join_date DATE NOT NULL,
+        total_visits INT,
         PRIMARY KEY(user_id)
     );
 `;
