@@ -10,13 +10,13 @@ const debug = debugLib("final-project_back-end-bootglampers");
 
 /*** Get port from environment and store in Express. **/
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 8000;
-}
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 8000;
+// }
 
-// const port = normalizePort(process.env.PORT || "3000");
-// app.set("port", port);
+const port = normalizePort(process.env.PORT || "3000");
+app.set("port", port);
 
 /*** Create HTTP server.*/
 
