@@ -18,6 +18,6 @@ app.use(express.json());
 // });
 
 // // routes
-app.get("/stats", statsRouter);
+app.use("/stats", statsRouter);
 
 export default app;
