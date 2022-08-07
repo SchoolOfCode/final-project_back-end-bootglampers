@@ -21,7 +21,7 @@ router.get("/:userId/:path", async function (req, res) {
       });
       break;
     case "totalmedtime":
-      result = await getTotalMedTime(req.params.userId);
+      result = await getTotalVisits(req.params.userId);
       console.log(req.params.userId);
       res.json({
         success: true,
