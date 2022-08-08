@@ -17,10 +17,10 @@ statsRouter.get("/:userId", async function (req, res) {
   const averageMood = await getAverageMood(userId);
 
   const result = {
-    visits: totalVisits[0].total_visits,
-    total_meditation_time: totalMedidationTime[0].total_meditation_time,
+    visits: Number(totalVisits[0].total_visits),
+    total_meditation_time: Number(totalMedidationTime[0].total_meditation_time),
     mood_data: {
-      average_mood: averageMood[0].average_overall_mood,
+      average_mood: Number(averageMood[0].average_overall_mood),
       all_moodlogs: await getAllDataMoodLog(userId),
     },
   };
