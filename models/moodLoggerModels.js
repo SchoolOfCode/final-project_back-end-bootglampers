@@ -1,5 +1,5 @@
 import { query } from "../db/index.js";
-import { getUserId } from "./getUserId.js";
+import { getUserId } from "./sharedFunctions.js";
 
 //******* Update mood logger **/
 

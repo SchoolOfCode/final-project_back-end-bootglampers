@@ -4,6 +4,7 @@ import {
   getTotalMedTime,
   getAllDataMoodLog,
   getAverageMood,
+  getStreak,
 } from "../models/statsPageModels.js";
 
 const statsRouter = express.Router();
@@ -15,6 +16,7 @@ statsRouter.get("/:userId", async function (req, res) {
   const result = {
     visits: await getTotalVisits(userId),
     total_meditation_time: await getTotalMedTime(userId),
+    daily_streak: await getStreak(userId),
     mood_data: {
       average_mood: await getAverageMood(userId),
       all_moodlogs: await getAllDataMoodLog(userId),

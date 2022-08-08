@@ -4,6 +4,7 @@ import logger from "morgan";
 import statsRouter from "./routes/statsPage.js";
 import moodRouter from "./routes/moodLoggerPage.js";
 import registrationRouter from "./routes/registrationPage.js";
+import meditationRouter from "./routes/meditationPage.js";
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.get("/", function (req, res) {
 app.use("/stats", statsRouter);
 app.use("/mood-log", moodRouter);
 app.use("/registration", registrationRouter);
+app.use("/meditation", meditationRouter);
 
 export default app;

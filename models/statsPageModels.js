@@ -53,7 +53,21 @@ export async function getAverageMood(userId) {
   return averageMood;
 }
 
-// streak - stretch goal
+// streak
+export async function getStreak(userId) {
+  const result = await query(
+    `SELECT m.date, m.streak_days
+    FROM meditation_log AS m
+    LEFT JOIN users AS u
+    ON u.user_id = m.user_id
+    WHERE u.firebase_user_id = $1
+    ORDER BY m.streak_days DESC
+    LIMIT 1;`,
+    [userId]
+  );
+  const streak = Number(result.rows[0].streak_days);
+  return streak;
+}
 
 // pet age - stretch goal
 // export async function getPetAge(userId) {
