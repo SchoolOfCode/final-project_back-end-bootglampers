@@ -12,14 +12,14 @@ statsRouter.get("/:userId", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
   const userId = req.params.userId;
 
-  const result = [
-    await getTotalVisits(userId),
-    await getTotalMedTime(userId),
-    {
+  const result = {
+    visits: await getTotalVisits(userId),
+    meditationTime: await getTotalMedTime(userId),
+    moodData: {
       moodstats: await getAverageMood(userId),
       allmoodlogs: await getAllDataMoodLog(userId),
     },
-  ];
+  };
 
   res.json({
     success: true,
