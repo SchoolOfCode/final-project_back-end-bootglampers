@@ -2,13 +2,13 @@ import { query } from "../db/index.js";
 
 //************** Get all stats **********/
 export async function getTotalVisits(userId) {
-  console.log(userId);
   const result = await query(
     `SELECT total_visits FROM users
     WHERE firebase_user_id = $1;`,
     [userId]
   );
-  return result.rows;
+  const totalVisits = Number(result.rows[0].total_visits);
+  return totalVisits;
 }
 
 // total meditation time
@@ -21,7 +21,10 @@ export async function getTotalMedTime(userId) {
     WHERE u.firebase_user_id = $1;`,
     [userId]
   );
-  return result.rows;
+
+  const totalMeditationTime = Number(result.rows[0].total_meditation_time);
+  console.log(totalMeditationTime);
+  return totalMeditationTime;
 }
 
 // mood log
@@ -34,7 +37,6 @@ export async function getAllDataMoodLog(userId) {
     WHERE u.firebase_user_id = $1;`,
     [userId]
   );
-  console.log(result.rows);
   return result.rows;
 }
 
@@ -47,8 +49,8 @@ export async function getAverageMood(userId) {
     WHERE u.firebase_user_id = $1`,
     [userId]
   );
-  console.log(result.rows);
-  return result.rows;
+  const averageMood = Number(result.rows[0].average_overall_mood);
+  return averageMood;
 }
 
 // streak - stretch goal

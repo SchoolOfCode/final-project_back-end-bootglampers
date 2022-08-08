@@ -1,18 +1,12 @@
 import { query } from "../db/index.js";
+import { getUserId } from "./getUserId.js";
 
 //******* Update mood logger **/
 
-export async function getUserId(firebaseUserId) {
-  const result = await query(
-    `SELECT user_id FROM users
-    WHERE firebase_user_id = $1;`,
-    [firebaseUserId]
-  );
-  const dbUserId = result.rows[0].user_id;
-  return dbUserId;
-}
+export async function updateMoodLogger(req) {
+  const firebaseUserId = req.body.firebase_user_id;
+  const moodRating = Number(req.body.mood_rating);
 
-export async function updateMoodLogger(firebaseUserId, moodRating) {
   const dbUserId = await getUserId(firebaseUserId);
   const result = await query(
     `INSERT INTO mood_log (user_id, date, mood_rating)
