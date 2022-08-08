@@ -1,5 +1,10 @@
 import express from "express";
-import { getTotalVisits, getTotalMedTime } from "../models/statsPageModels.js";
+import {
+  getTotalVisits,
+  getTotalMedTime,
+  getAllDataMoodLog,
+  getAverageMood,
+} from "../models/statsPageModels.js";
 
 const statsRouter = express.Router();
 
@@ -7,13 +12,15 @@ statsRouter.get("/:userId", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
   const userId = req.params.userId;
 
-  const totalVisits = await getTotalVisits(userId);
-  const totalMediTime = await getTotalMedTime(userId);
+  const result = {
+    totalVisits: await getTotalVisits(userId),
+    totalMediTime: await getTotalMedTime(userId),
+    moodStats: [await getAverageMood(userId), await getAllDataMoodLog(userId)],
+  };
 
   res.json({
     success: true,
-    payload: totalVisits,
-    totalMediTime,
+    payload: result,
   });
 });
 

@@ -34,8 +34,11 @@ async function populateMeditationTable() {
   (1, 1, CURRENT_DATE, 120, 1),
   (1, 1, CURRENT_DATE, 300, 1),
   (2, 2, CURRENT_DATE, 180, 0),
+  (2, 2, CURRENT_DATE, 100, 0),
   (3, 3, CURRENT_DATE, 220, 3),
-  (4, 4, CURRENT_DATE, 260, 4);
+  (3, 3, CURRENT_DATE, 120, 3),
+  (4, 4, CURRENT_DATE, 260, 4),
+  (4, 4, CURRENT_DATE, 300, 4);
   `);
   console.log(`${res.command} Populated meditation table`);
 }
@@ -46,9 +49,17 @@ async function populateMoodLogTable() {
     INSERT INTO mood_log (user_id, date, mood_rating)
     VALUES
     (1, CURRENT_DATE, 2),
+    (1, CURRENT_DATE, 3),
+    (1, CURRENT_DATE, 4),
     (2, CURRENT_DATE, 3),
+    (2, CURRENT_DATE, 4),
+    (2, CURRENT_DATE, 5),
     (3, CURRENT_DATE, 4),
-    (4, CURRENT_DATE, 5);
+    (3, CURRENT_DATE, 5),
+    (3, CURRENT_DATE, 1),
+    (4, CURRENT_DATE, 5),
+    (4, CURRENT_DATE, 4),
+    (4, CURRENT_DATE, 3);
     `);
   console.log(`${res.command} Populated mood log table`);
 }

@@ -16,7 +16,7 @@ export async function getTotalVisits(userId) {
 // total meditation time
 export async function getTotalMedTime(userId) {
   const result = await query(
-    `SELECT SUM(meditation_length)
+    `SELECT SUM(meditation_length) AS total_meditation_time
     FROM meditation_log AS m
     LEFT JOIN users AS u
     ON u.user_id = m.user_id 
@@ -27,6 +27,31 @@ export async function getTotalMedTime(userId) {
 }
 
 // mood log
+export async function getAllDataMoodLog(userId) {
+  const result = await query(
+    `SELECT u.user_id, m.mood_log_id, m.date, m.mood_rating
+    FROM mood_log AS m
+    LEFT JOIN users AS u
+    ON u.user_id = m.user_id 
+    WHERE u.firebase_user_id = $1;`,
+    [userId]
+  );
+  console.log(result.rows);
+  return result.rows;
+}
+
+export async function getAverageMood(userId) {
+  const result = await query(
+    `SELECT AVG(m.mood_rating) AS average_overall_mood
+    FROM mood_log AS m
+    LEFT JOIN users AS u
+    ON u.user_id = m.user_id 
+    WHERE u.firebase_user_id = $1`,
+    [userId]
+  );
+  console.log(result.rows);
+  return result.rows;
+}
 
 // streak - stretch goal
 
