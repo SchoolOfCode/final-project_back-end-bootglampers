@@ -12,8 +12,11 @@ statsRouter.get("/:userId", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
   const userId = req.params.userId;
 
+  const totalVisits = await getTotalVisits(userId);
+  console.log(totalVisits);
+
   const result = {
-    visits: await getTotalVisits(userId),
+    visits: totalVisits[0].total_visits,
     meditationTime: await getTotalMedTime(userId),
     moodData: {
       moodstats: await getAverageMood(userId),
