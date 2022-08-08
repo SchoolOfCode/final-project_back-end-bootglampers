@@ -42,7 +42,7 @@ export async function getAllDataMoodLog(userId) {
 
 export async function getAverageMood(userId) {
   const result = await query(
-    `SELECT AVG(m.mood_rating) AS average_overall_mood
+    `SELECT ROUND(AVG(m.mood_rating), 2) AS average_overall_mood
     FROM mood_log AS m
     LEFT JOIN users AS u
     ON u.user_id = m.user_id 
