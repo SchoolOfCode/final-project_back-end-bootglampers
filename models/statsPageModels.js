@@ -1,8 +1,6 @@
 import { query } from "../db/index.js";
 
 //************** Get all stats **********/
-// paramater of userid
-// visits
 export async function getTotalVisits(userId) {
   console.log(userId);
   const result = await query(
