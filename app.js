@@ -8,8 +8,13 @@ import meditationRouter from "./routes/meditationPage.js";
 
 const app = express();
 
+var corsOptions = {
+  origin: ['http://localhost:19006/', 'https://medi-mate.netlify.app/'],
+  credentials: true,
+};
+
 app.use(logger("dev"));
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // //test route
