@@ -8,7 +8,7 @@ petIdRouter.get("/:userId", async function (req, res) {
   const result = await getPetId(userId);
   res.json({
     success: true,
-    "pet-id": result,
+    pet_id: result,
   });
 });
 
