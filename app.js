@@ -6,6 +6,7 @@ import moodRouter from "./routes/moodLoggerPage.js";
 import registrationRouter from "./routes/registrationPage.js";
 import meditationRouter from "./routes/meditationPage.js";
 import petNameRouter from "./routes/petNamingPage.js";
+import petIdRouter from "./routes/getPetId.js";
 
 const app = express();
 
@@ -32,5 +33,6 @@ app.use("/mood-log", moodRouter);
 app.use("/registration", registrationRouter);
 app.use("/meditation", meditationRouter);
 app.use("/register-pet", petNameRouter);
+app.use("/pet-id", petIdRouter);
 
 export default app;
