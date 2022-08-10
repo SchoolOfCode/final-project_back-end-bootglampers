@@ -13,6 +13,9 @@ statsRouter.get("/:userId", async function (req, res) {
   // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
   const userId = req.params.userId;
 
+  /*
+  promise.all  - give array  of promises/async functions  
+  */
   const result = {
     visits: await getTotalVisits(userId),
     total_meditation_time: await getTotalMedTime(userId),

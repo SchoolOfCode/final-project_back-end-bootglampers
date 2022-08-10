@@ -1,4 +1,5 @@
 import { query } from "../db/index.js";
+import { getUserId } from "./sharedFunctions.js";
 
 export async function createUserEntry(req) {
   const firebaseUserId = req.body.firebase_user_id;
@@ -11,6 +12,22 @@ export async function createUserEntry(req) {
         ($1, $2, CURRENT_DATE, 1)
         RETURNING *;`,
     [username, firebaseUserId]
+  );
+  return result.rows;
+}
+
+//********* Post request ********/
+export async function populateDefaultMoodLog(req) {
+  const firebaseUserId = req.body.firebase_user_id;
+  const userId = await getUserId(firebaseUserId);
+
+  const result = await query(
+    `INSERT INTO mood_log
+    (user_id, date, mood_rating)    
+    VALUES
+    ($1, NULL, NULL)
+    RETURNING *;`,
+    [userId]
   );
   return result.rows;
 }

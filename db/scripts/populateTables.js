@@ -5,7 +5,7 @@ async function populateUsersTable() {
   const res = await query(` 
   INSERT INTO users (username, firebase_user_id, join_date, total_visits)
   VALUES
-  ('chocorainaaa', 'CNXBkvXJbxUjh5bOxk8NN2DV2l72', CURRENT_DATE, 1),
+  ('chocorainaaa', '7mOhWsu1GZfaPVm62PhIRS3FYSf1', CURRENT_DATE, 1),
   ('lewis-signupstech', 'BNWd6NjltWZnnIPROdnSHaCNMKM2', CURRENT_DATE, 2),
   ('emmma', 'jozQBkdav0h5mWbBk5qlwRqIxR52', CURRENT_DATE, 3),
   ('lorentz', 'PsiAAIPYIhRXdzlPGMDy1xwvjKJ3', CURRENT_DATE, 4);

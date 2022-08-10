@@ -39,8 +39,8 @@ const sqlMeditationTableString = `CREATE TABLE IF NOT EXISTS meditation_log (
     meditation_id INT GENERATED ALWAYS AS IDENTITY,
     pet_id INT NOT NULL,
     user_id INT NOT NULL,
-    date DATE NOT NULL,
-    meditation_length INT NOT NULL,
+    date DATE,
+    meditation_length INT,
     streak_days INT,     
     PRIMARY KEY(meditation_id),
     FOREIGN KEY(user_id)
