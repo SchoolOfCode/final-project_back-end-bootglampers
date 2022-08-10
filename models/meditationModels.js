@@ -11,6 +11,7 @@ export async function postMeditatedTime(req) {
   const streakDays = Number(req.body.streak_days);
 
   console.log(petId, dbUserId, meditationLength, streakDays);
+
   const results = await query(
     `INSERT INTO meditation_log 
     (pet_id, user_id, date, meditation_length, streak_days)

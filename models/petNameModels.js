@@ -5,8 +5,17 @@ export async function createPetEntry(req) {
   const firebaseUserId = req.body.firebase_user_id;
   const petName = req.body.pet_name;
   const userId = await getUserId(firebaseUserId);
+
+  const deleteNulls = await query(
+    `DELETE FROM pets
+  WHERE pet_name IS NULL AND user_id = $1
+  RETURNING *;`,
+    [userId]
+  );
+
   const result = await query(
-    `INSERT INTO pets 
+    `    
+    INSERT INTO pets 
         (pet_name, user_id, pet_birth_date, pet_meditation_total)
         VALUES 
         ($1, $2, CURRENT_DATE, 0)
