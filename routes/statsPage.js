@@ -10,25 +10,34 @@ import {
 const statsRouter = express.Router();
 
 statsRouter.get("/:userId", async function (req, res) {
-  // example id = CNXBkvXJbxUjh5bOxk8NN2DV2l72
   const userId = req.params.userId;
 
-  /*
-  promise.all  - give array  of promises/async functions  
-  */
-  const result = {
-    visits: await getTotalVisits(userId),
-    total_meditation_time: await getTotalMedTime(userId),
-    daily_streak: await getStreak(userId),
-    mood_data: {
-      average_mood: await getAverageMood(userId),
-      all_moodlogs: await getAllDataMoodLog(userId),
-    },
-  };
+  const visitsPromise = await getTotalVisits(userId);
+  const totalMeditationTimePromise = await getTotalMedTime(userId);
+  const dailyStreakPromise = await getStreak(userId);
+  const avgMoodPromise = await getAverageMood(userId);
+  const allMoodLogsPromise = await getAllDataMoodLog(userId);
 
-  res.json({
-    success: true,
-    payload: result,
+  await Promise.all([
+    visitsPromise,
+    totalMeditationTimePromise,
+    dailyStreakPromise,
+    avgMoodPromise,
+    allMoodLogsPromise,
+  ]).then((values) => {
+    const result = {
+      visits: values[0],
+      total_meditation_time: values[1],
+      daily_streak: values[2],
+      mood_data: {
+        average_mood: values[3],
+        all_moodlogs: values[4],
+      },
+    };
+    res.json({
+      success: true,
+      payload: result,
+    });
   });
 });
 

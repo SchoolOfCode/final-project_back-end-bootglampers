@@ -23,7 +23,6 @@ export async function getTotalMedTime(userId) {
   );
 
   const totalMeditationTime = Number(result.rows[0].total_meditation_time);
-  console.log(totalMeditationTime);
   return totalMeditationTime;
 }
 
@@ -61,7 +60,7 @@ export async function getStreak(userId) {
     LEFT JOIN users AS u
     ON u.user_id = m.user_id
     WHERE u.firebase_user_id = $1
-    ORDER BY m.streak_days DESC
+    ORDER BY m.streak_days ASC
     LIMIT 1;`,
     [userId]
   );
@@ -69,7 +68,6 @@ export async function getStreak(userId) {
   return streak;
 }
 
-// pet age - stretch goal
 // export async function getPetAge(userId) {
 //   console.log(userId);
 //   const dateOfBirth = await query(
