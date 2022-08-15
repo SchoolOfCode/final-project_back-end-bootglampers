@@ -2,7 +2,6 @@
 
 There are many people who would like to meditate, but struggle to build that habit.
 
-
 Our app uses gamification to encourage daily visits to build that meditation habit. Along with your chosen Medi-Mate, you will learn to breath and meditate alongisde your new friend and keep them happy and healthy.
 
 Looking for the [Front-end?](https://github.com/SchoolOfCode/medi-mate-front-end)
@@ -13,14 +12,15 @@ Live [website](https://medi-mate.netlify.app/)
 
 ```bash
   git clone https://github.com/SchoolOfCode/final-project_back-end-bootglampers.git
-  
+
   cd medi-mate-front-end
-  
+
   npm i
 
 ```
 
 ## Run the back-end
+
 To run the front end:
 
 ```bash
@@ -38,8 +38,8 @@ To run the front end:
 </div>
 
 ### The reasons behind the techstack we choose
-We were familiar with the tech stack for our back-end, having used it previously in the course. We were already using new technologies on the front-end, so decided to play it safe on the back-end.
 
+We were familiar with the tech stack for our back-end, having used it previously in the course. We were already using new technologies on the front-end, so decided to play it safe on the back-end. Additionally a relational database served our planned data structure.
 
 ## Authors
 
@@ -47,4 +47,3 @@ We were familiar with the tech stack for our back-end, having used it previously
 - [@Raina Blackett](https://github.com/chocorainaaa)
 - [@Lorentz Bloom](https://github.com/Lauro235)
 - [@Lewis Parr](https://github.com/Le-w-is)
-

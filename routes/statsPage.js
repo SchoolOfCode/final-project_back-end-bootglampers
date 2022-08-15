@@ -17,7 +17,6 @@ statsRouter.get("/:userId", async function (req, res) {
   const dailyStreakPromise = await getStreak(userId);
   const avgMoodPromise = await getAverageMood(userId);
   const allMoodLogsPromise = await getAllDataMoodLog(userId);
-
   await Promise.all([
     visitsPromise,
     totalMeditationTimePromise,
@@ -40,5 +39,35 @@ statsRouter.get("/:userId", async function (req, res) {
     });
   });
 });
+
+// try {
+//   await Promise.all([
+//     visitsPromise,
+//     totalMeditationTimePromise,
+//     dailyStreakPromise,
+//     avgMoodPromise,
+//     allMoodLogsPromise,
+//   ]).then((values) => {
+//     const result = {
+//       visits: values[0],
+//       total_meditation_time: values[1],
+//       daily_streak: values[2],
+//       mood_data: {
+//         average_mood: values[3],
+//         all_moodlogs: values[4],
+//       },
+//     };
+//     res.json({
+//       success: true,
+//       payload: result,
+//     });
+//   });
+// } catch (e) {
+//   res.json({
+//     success: false,
+//     payload: e,
+//   });
+// }
+// });
 
 export default statsRouter;
