@@ -13,6 +13,7 @@ const app = express();
 var corsOptions = {
   origin: ["http://localhost:19006/", "https://medi-mate.netlify.app/"],
   credentials: true,
+  allowedHeaders: "",
 };
 
 app.use(logger("dev"));
