@@ -29,7 +29,7 @@ app.get("/", function (req, res) {
 });
 
 // // routes
-app.use("/stats", statsRouter);
+app.use(cors(corsOptions("/stats", statsRouter)));
 app.use("/mood-log", moodRouter);
 app.use("/registration", registrationRouter);
 app.use("/meditation", meditationRouter);
