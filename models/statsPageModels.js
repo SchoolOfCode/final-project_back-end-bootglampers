@@ -69,6 +69,9 @@ export async function getStreak(userId) {
     LIMIT 1;`,
     [userId]
   );
+  console.log(result, "log");
+  console.log(result.rows);
+  console.log(result.rows[0]);
   const streak = Number(result.rows[0].streak_days);
   return streak;
 }
