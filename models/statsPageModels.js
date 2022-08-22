@@ -2,7 +2,7 @@ import { query } from "../db/index.js";
 
 //************** Get all stats **********/
 export async function getTotalVisits(userId) {
-  console.log("hello")
+  console.log("hello");
   const result = await query(
     `SELECT total_visits FROM users
     WHERE firebase_user_id = $1;`,
@@ -58,6 +58,7 @@ export async function getAverageMood(userId) {
 
 // streak
 export async function getStreak(userId) {
+  console.log("pause");
   const result = await query(
     `SELECT m.date, m.streak_days
     FROM meditation_log AS m

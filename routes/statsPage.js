@@ -17,6 +17,16 @@ statsRouter.get("/:userId", async function (req, res) {
   const dailyStreakPromise = await getStreak(userId);
   const avgMoodPromise = await getAverageMood(userId);
   const allMoodLogsPromise = await getAllDataMoodLog(userId);
+
+  // split promises with .then run them one by one, with a catch and a condition
+  // 
+  //example of chaining promises and catches
+  // await Promise(visitsPromise).catch((e) => {
+  //   res.json({
+  //     success: false,
+  //     payload: e,
+  //   }).then(await Promise(totalMeditationTimePromise).catch(()))
+
   await Promise.all([
     visitsPromise,
     totalMeditationTimePromise,
