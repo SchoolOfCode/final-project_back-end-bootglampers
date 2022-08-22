@@ -27,6 +27,24 @@ app.get("/", function (req, res) {
   });
 });
 
+//example
+// module.exports = (req, res, next) => {
+//   if (req.url === '/favicon.ico') {
+//     res.type('image/x-icon');
+//     res.status(301);
+//     res.end();
+//     return;
+//   }
+//   next();
+// };
+
+app.get("/favicon.ico", function (req, res) {
+  res.type('image/x-icon');
+  res.status(301);
+  res.end();
+  return;
+})
+
 // // routes
 app.use("/stats", statsRouter);
 app.use("/mood-log", moodRouter);
