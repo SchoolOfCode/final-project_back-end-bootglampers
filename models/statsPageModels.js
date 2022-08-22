@@ -7,7 +7,7 @@ export async function getTotalVisits(userId) {
     WHERE firebase_user_id = $1;`,
     [userId]
   );
-  console.log(result);
+  console.log(result, "log");
   console.log(result.rows);
   console.log(result.rows[0]);
   const totalVisits = Number(result.rows[0].total_visits);
