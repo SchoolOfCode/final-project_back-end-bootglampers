@@ -31,3 +31,18 @@ export async function populateDefaultMoodLog(req) {
   );
   return result.rows;
 }
+
+export async function createDefaultPetEntry(req) {
+  const firebaseUserId = req.body.firebase_user_id;
+  const userId = await getUserId(firebaseUserId);
+  const result = await query(
+    `
+    INSERT INTO pets 
+        (pet_name, user_id, pet_birth_date, pet_meditation_total)
+        VALUES 
+        (NULL, $1, NULL, NULL)
+        RETURNING *; `,
+    [userId]
+  );
+  return result.rows;
+}

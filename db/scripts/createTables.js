@@ -19,9 +19,9 @@ async function createUsersTable() {
 //*************** Pet Table ***********************//
 const sqlPetTableString = `CREATE TABLE IF NOT EXISTS pets (
     pet_id INT GENERATED ALWAYS AS IDENTITY,
-    pet_name VARCHAR(32) NOT NULL,
-    user_id INT NOT NULL,
-    pet_birth_date DATE NOT NULL, 
+    pet_name VARCHAR(32),
+    user_id INT,
+    pet_birth_date DATE, 
     pet_meditation_total INT,     
     PRIMARY KEY(pet_id),
     FOREIGN KEY(user_id)

@@ -10,13 +10,16 @@ import petIdRouter from "./routes/getPetId.js";
 
 const app = express();
 
-var corsOptions = {
-  origin: ["http://localhost:19006/", "https://medi-mate.netlify.app/"],
+const corsOptions = {
+  origin: ["https://medi-mate.netlify.app/", "http://localhost:19006/"],
   credentials: true,
+  optionsSuccessStatus: 200,
+  allowedHeaders: "",
 };
 
 app.use(logger("dev"));
 app.use(cors(corsOptions));
+app.options("*", cors());
 app.use(express.json());
 
 // //test route
