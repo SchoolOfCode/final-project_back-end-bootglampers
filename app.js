@@ -11,7 +11,7 @@ import petIdRouter from "./routes/getPetId.js";
 const app = express();
 
 const corsOptions = {
-  origin: ["https://medi-mate.netlify.app/", "http://localhost:19006/"],
+  origin: ["https://medi-mate.netlify.app", "http://localhost:19006"],
   credentials: true,
   optionsSuccessStatus: 200,
   allowedHeaders: "",
@@ -42,11 +42,11 @@ app.get("/", function (req, res) {
 // };
 
 app.get("/favicon.ico", function (req, res) {
-  res.type('image/x-icon');
+  res.type("image/x-icon");
   res.status(301);
   res.end();
   return;
-})
+});
 
 // // routes
 app.use("/stats", statsRouter);
