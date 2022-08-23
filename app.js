@@ -19,7 +19,7 @@ const corsOptions = {
 
 app.use(logger("dev"));
 app.use(cors(corsOptions));
-app.options("*", cors());
+// app.options("*", cors());
 app.use(express.json());
 
 // //test route
