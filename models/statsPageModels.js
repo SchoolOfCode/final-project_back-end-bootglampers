@@ -2,15 +2,15 @@ import { query } from "../db/index.js";
 
 //************** Get all stats **********/
 export async function getTotalVisits(userId) {
-  console.log("hello");
+  // console.log("hello");
   const result = await query(
     `SELECT total_visits FROM users
     WHERE firebase_user_id = $1;`,
     [userId]
   );
-  console.log(result, "log");
-  console.log(result.rows);
-  console.log(result.rows[0]);
+  // console.log(result, "log");
+  // console.log(result.rows);
+  // console.log(result.rows[0]);
   const totalVisits = Number(result.rows[0].total_visits);
   return totalVisits;
 }
