@@ -8,9 +8,9 @@ export async function getTotalVisits(userId) {
     WHERE firebase_user_id = $1;`,
     [userId]
   );
-  // console.log(result, "log");
-  // console.log(result.rows);
-  // console.log(result.rows[0]);
+  if (result.rows.length === 0) {
+    return 0;
+  }
   const totalVisits = Number(result.rows[0].total_visits);
   return totalVisits;
 }
@@ -25,7 +25,9 @@ export async function getTotalMedTime(userId) {
     WHERE u.firebase_user_id = $1;`,
     [userId]
   );
-
+  if (result.rows.length === 0) {
+    return 0;
+  }
   const totalMeditationTime = Number(result.rows[0].total_meditation_time);
   return totalMeditationTime;
 }
@@ -40,6 +42,9 @@ export async function getAllDataMoodLog(userId) {
     WHERE u.firebase_user_id = $1;`,
     [userId]
   );
+  if (result.rows.length === 0) {
+    return 0;
+  }
   return result.rows;
 }
 
@@ -52,13 +57,15 @@ export async function getAverageMood(userId) {
     WHERE u.firebase_user_id = $1`,
     [userId]
   );
+  if (result.rows.length === 0) {
+    return 0;
+  }
   const averageMood = Number(result.rows[0].average_overall_mood);
   return averageMood;
 }
 
 // streak
 export async function getStreak(userId) {
-  console.log("pause");
   const result = await query(
     `SELECT m.date, m.streak_days
     FROM meditation_log AS m
@@ -69,9 +76,9 @@ export async function getStreak(userId) {
     LIMIT 1;`,
     [userId]
   );
-  console.log(result, "log");
-  console.log(result.rows);
-  console.log(result.rows[0]);
+  if (result.rows.length === 0) {
+    return 0;
+  }
   const streak = Number(result.rows[0].streak_days);
   return streak;
 }
