@@ -65,13 +65,13 @@ statsRouter.get("/:userId", async function (req, res) {
 });
 
 
-//   await Promise.all([
-//     visitsPromise,
-//     totalMeditationTimePromise,
-//     dailyStreakPromise,
-//     avgMoodPromise,
-//     allMoodLogsPromise,
-//   ]).catch((e) => {
+// await Promise.all([
+//   visitsPromise,
+//   totalMeditationTimePromise,
+//   dailyStreakPromise,
+//   avgMoodPromise,
+//   allMoodLogsPromise,
+// ]).catch((e) => {
 //     res.json({
 //       success: false,
 //       payload: e,
