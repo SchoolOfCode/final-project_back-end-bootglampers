@@ -12,11 +12,25 @@ const statsRouter = express.Router();
 statsRouter.get("/:userId", async function (req, res) {
   const userId = req.params.userId;
 
-  const visitsPromise = await getTotalVisits(userId);
-  const totalMeditationTimePromise = await getTotalMedTime(userId);
-  const dailyStreakPromise = await getStreak(userId);
-  const avgMoodPromise = await getAverageMood(userId);
-  const allMoodLogsPromise = await getAllDataMoodLog(userId);
+  const visitsPromise = getTotalVisits(userId);
+  const totalMeditationTimePromise = getTotalMedTime(userId);
+  const dailyStreakPromise = getStreak(userId);
+  const avgMoodPromise = getAverageMood(userId);
+  const allMoodLogsPromise = getAllDataMoodLog(userId);
+
+  // const result = {
+  //   visits: visitsPromise,
+  //   total_meditation_time: totalMeditationTimePromise,
+  //   daily_streak: dailyStreakPromise,
+  //   mood_data: {
+  //     average_mood: avgMoodPromise,
+  //     all_moodlogs: allMoodLogsPromise,
+  //   },
+  // };
+  // res.json({
+  //   success: true,
+  //   payload: result,
+  // });
 
   await Promise.all([
     visitsPromise,
